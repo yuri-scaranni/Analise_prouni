@@ -27,8 +27,10 @@ def grafico_raca(dataframe):
     :return:
     """
     sns.set_style("darkgrid")
-    sns.countplot(data=dataframe, x='RACA_BENEFICIARIO_BOLSA', palette="ch:.25")
+    ax = sns.countplot(data=dataframe, x='RACA_BENEFICIARIO_BOLSA')
     plt.xlabel("Cor")
     plt.ylabel("Quantitativo")
     plt.title("Alunos por raça ProUni - RJ - 2018")
+    for p in ax.patches:
+        ax.annotate('{}'.format(p.get_height()), (p.get_x() + 0.25, p.get_height() + 50))
     plt.show()
